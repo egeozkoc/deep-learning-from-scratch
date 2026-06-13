@@ -1,8 +1,6 @@
 import sys
 from pathlib import Path
 
-from matplotlib.pylab import rint
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -45,21 +43,55 @@ def main():
 
     model = AlexNetMNIST()
     model.data_layer = data_layer
-    for iteration in range(100):
+    for iteration in range(total_iterations):
         loss = model.forward()
+        train_loss = loss / batch_size
         train_predictions = model.loss_layer.prediction_tensor
         train_labels = model.label_tensor
         train_accuracy = calculate_accuracy(train_predictions, train_labels)
         model.loss.append(loss)
         model.backward()
-        print(f"Iteration {iteration + 1}, train loss: {loss / batch_size}, train accuracy: {train_accuracy}")
 
-    print(f"Final loss: {model.loss[-1]}")
+        if (iteration + 1) % 100 == 0:
+            val_eval_size = 100
+            val_predictions = model.test(val_images[:val_eval_size])
+            val_loss = model.loss_layer.forward(
+                val_predictions,
+                val_labels[:val_eval_size]
+            ) / val_eval_size
+            val_accuracy = calculate_accuracy(
+                val_predictions,
+                val_labels[:val_eval_size]
+            )
+            model.phase(False)
+            
+        print(
+            f"Iteration {iteration + 1}, "
+            f"train loss: {train_loss}, "
+            f"train accuracy: {train_accuracy}, "
+            )
+        if (iteration + 1) % 100 == 0:
+            print(
+                f"val loss: {val_loss}, "
+                f"val accuracy: {val_accuracy}"
+            )
 
+    
     test_images, test_labels = data_layer.get_test_set()
-    predictions = model.test(test_images[:batch_size])
+    test_eval_size = 1000
 
-    print(f"Predictions: {predictions}")
+    test_predictions = model.test(test_images[:test_eval_size])
+    test_loss = model.loss_layer.forward(
+        test_predictions,
+        test_labels[:test_eval_size]
+    ) / test_eval_size
+    test_accuracy = calculate_accuracy(
+        test_predictions,
+        test_labels[:test_eval_size]
+    )
+
+    print(f"Test loss: {test_loss}")
+    print(f"Test accuracy: {test_accuracy}")
 
 if __name__ == "__main__":
     main()
