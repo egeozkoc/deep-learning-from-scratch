@@ -1,7 +1,7 @@
 # Deep Learning Framework from Scratch
 
 ## Overview
-This repository contains a deep learning framework implemented from scratch in Python, developed as a course project at **Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)**. Every component — from forward and backward passes to optimizers and regularization — was written by hand without the use of any deep learning libraries such as PyTorch or TensorFlow.
+This repository contains a deep learning framework implemented from scratch in Python, developed as a course project at **Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)**. Every component — from forward and backward passes to optimizers and regularization — was written by hand (no LLMs were used) without the use of any deep learning libraries such as PyTorch or TensorFlow.
 
 The goal of the project was to build a thorough understanding of the inner workings of neural networks by implementing the core components from first principles using only NumPy.
 
@@ -13,5 +13,4 @@ The goal of the project was to build a thorough understanding of the inner worki
 - **Loss Functions**: Cross-Entropy Loss
 
 ## Notes
-- All code was written from scratch by hand as part of the coursework at FAU Erlangen-Nürnberg.
-- The only external dependency is NumPy (and SciPy for convolution operations).
+- The main dependency of this project is NumPy. However, SciPy (for convolution operations), and torch vision (to download the MNIST dataset to test the deep learning framework) are also imported. 

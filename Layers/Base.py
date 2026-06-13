@@ -1,6 +1,6 @@
 class BaseLayer:
     """
-    In this project we implement a layer oriented Deep Learning framework for high level of abstraction.
+    In this project we implement a layer oriented deep learning framework for abstraction.
     All the layers in the framework will inherit from the BaseLayer class.
     """
     
