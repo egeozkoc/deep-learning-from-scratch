@@ -1,4 +1,3 @@
-import Layers.FullyConnected
 from Optimization.Loss import CrossEntropyLoss
 from Layers.Initializers import Xavier
 from Layers.Initializers import Constant
