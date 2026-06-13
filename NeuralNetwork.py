@@ -54,10 +54,12 @@ class NeuralNetwork:
         for i in range(0, len(self.layers)):
             self.layer = self.layers[i]
             input_tensor = self.layer.forward(input_tensor)
-            if isinstance(self.layer, Layers.FullyConnected.FullyConnected) or isinstance(self.layer, Layers.RNN.RNN):
-                if hasattr(self.layer, 'optimizer'):
-                    if hasattr(self.layer.optimizer, 'regularizer'):
-                        regularization_loss += self.layer.calculate_regularization_loss()
+            if (
+                hasattr(self.layer, "calculate_regularization_loss")
+                and hasattr(self.layer, "optimizer")
+                and hasattr(self.layer.optimizer, "regularizer")
+            ):
+                regularization_loss += self.layer.calculate_regularization_loss()
 
         loss = self.loss_layer.forward(input_tensor, self.label_tensor) + regularization_loss
         return loss
