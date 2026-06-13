@@ -41,6 +41,7 @@ class AlexNet(NeuralNetwork):
         self.append_layer(Dropout(0.5))
 
         self.append_layer(FullyConnected(4096, 10))
+        self.append_layer(SoftMax())
 
 
 class AlexNetMNIST(NeuralNetwork):
