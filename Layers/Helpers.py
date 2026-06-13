@@ -320,11 +320,11 @@ class MNISTData:
         root_dir = Path(__file__)
 
         if dataset == "training":
-            fname_img = root_dir.parent.parent.joinpath('Data', 'train-images-idx3-ubyte.gz')
-            fname_lbl = root_dir.parent.parent.joinpath('Data', 'train-labels-idx1-ubyte.gz')
+            fname_img = root_dir.parent.parent.joinpath('Data', 'MNIST', 'raw', 'train-images-idx3-ubyte.gz')
+            fname_lbl = root_dir.parent.parent.joinpath('Data', 'MNIST', 'raw', 'train-labels-idx1-ubyte.gz')
         elif dataset == "testing":
-            fname_img = root_dir.parent.parent.joinpath('Data', 't10k-images-idx3-ubyte.gz')
-            fname_lbl = root_dir.parent.parent.joinpath('Data', 't10k-labels-idx1-ubyte.gz')
+            fname_img = root_dir.parent.parent.joinpath('Data', 'MNIST', 'raw', 't10k-images-idx3-ubyte.gz')
+            fname_lbl = root_dir.parent.parent.joinpath('Data', 'MNIST', 'raw', 't10k-labels-idx1-ubyte.gz')
         else:
             raise ValueError("dataset must be 'testing' or 'training'")
 
