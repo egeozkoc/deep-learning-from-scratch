@@ -98,8 +98,8 @@ class NeuralNetwork:
         """
         self.phase(False)
         for i in range(0, iterations):
-            self.forward()
-            self.loss.append(self.forward())
+            loss = self.forward()
+            self.loss.append(loss)
             self.backward()
 
     def test(self, input_tensor):
