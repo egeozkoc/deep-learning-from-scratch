@@ -132,3 +132,14 @@ Potential improvements:
 - Evaluate full validation and test sets efficiently.
 - Add benchmarks for core operations.
 - Experiment with CUDA or CuPy acceleration for selected operators.
+## License & Attribution
+
+The neural-network layers, optimizers, and models in this repository are my own
+implementations, written for the Deep Learning course at Friedrich-Alexander-Universität
+Erlangen-Nürnberg (FAU). This original work is released under the [MIT License](LICENSE).
+
+One file, `Layers/Helpers.py` (gradient checking, dataset loaders, and plotting
+utilities), was **provided by the course** and is not my own work; it retains its
+original attribution in the file header. It is included only so the framework runs
+end to end, and is **not** covered by the MIT License — its rights remain with the
+original authors.
